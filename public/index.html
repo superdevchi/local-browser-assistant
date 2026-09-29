@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Browser Assistant</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Browser Assistant</h1>
+    <span id="status">Idle</span>
+    <div class="spacer"></div>
+    <button id="stop" type="button" disabled>Stop</button>
+  </header>
+
+  <div id="tabs" class="tabs"></div>
+
+  <div id="feedWrap"></div>
+
+  <template id="hint-template">
+    <p class="hint">
+      Tell me what to do in the browser, for example:<br>
+      “Open Gmail and write an email to sam@example.com asking to move Thursday’s meeting to 3pm.”<br><br>
+      A browser window opens separately. Sign in to your sites there once; the session is kept in <code>data/profile</code> on this computer.
+      I’ll ask before visiting a new site and before sending or submitting anything.<br><br>
+      Check “Private” before your first message in a tab to use a throwaway browser window instead — nothing from that tab is saved.
+    </p>
+  </template>
+
+  <form id="form">
+    <textarea id="input" rows="2" placeholder="What should I do?" autofocus></textarea>
+    <label class="private-toggle" title="Opens a separate, throwaway browser window for this tab. Nothing (cookies, sign-ins, history) is saved; it starts fully signed out. Locked in once you send the tab's first message.">
+      <input type="checkbox" id="incognito"> Private
+    </label>
+    <button id="send" type="submit">Send</button>
+  </form>
+
+  <script>window.TOKEN = "__TOKEN__";</script>
+  <script src="/app.js"></script>
+</body>
+</html>
